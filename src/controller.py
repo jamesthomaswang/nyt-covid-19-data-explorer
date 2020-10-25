@@ -112,8 +112,7 @@ def _choropleth_series_info(series):
 def _choropleth_title_text(series_text, fips, date):
     return (
         "{} in {}<br>"
-        "on {}<br>"
-        "<em>Click on a region to see more data.</em>"
+        "on {}"
     ).format(
         series_text,
         model.fips_name(fips),
@@ -166,9 +165,7 @@ def update_line(component, fig, granularity, fips=""):
 def _line_title_text(fips):
     return (
         "Number of Cases & Deaths from COVID-19<br>"
-        "in {}<br>"
-        "<em>Click to select the date represented<br>"
-        "in the map data.</em>"
+        "in {}"
     ).format(model.fips_name(fips))
 
 
