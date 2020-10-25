@@ -7,6 +7,7 @@ from pampy import match, _
 from enum import Enum
 
 import model
+import datetime
 
 
 Series = Enum("Series", "CASES DEATHS")
@@ -242,8 +243,15 @@ st_series = st.sidebar.radio(
                                 Series.DEATHS, "Show Deaths")
 )
 
+st_date = st.sidebar.date_input(
+    "Data Date",
+    value=datetime.date(2020, 9, 27),
+    min_value=model.covid_data(model.Granularity.COUNTRY).date.min(),
+    max_value=model.covid_data(model.Granularity.COUNTRY).date.max()
+)
+
 st_state = st.sidebar.selectbox(
-    "State", list(model.fips_data().fips.sort_values()), index=38,
+    "State", list(model.fips_data().fips.sort_values()), index=37,
     format_func=lambda x: model.fips_name(x)
 )
 
@@ -321,6 +329,10 @@ def update_all():
 
 if st_series:
     gui_state["series"] = st_series
+    update_choropleths()
+
+if st_date:
+    gui_state["date"] = st_date.isoformat()
     update_choropleths()
 
 if st_state:
