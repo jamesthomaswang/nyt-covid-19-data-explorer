@@ -199,12 +199,6 @@ country_map = create_choropleth()
 st_country_map = st_country_map_col.plotly_chart(
     country_map, use_container_width=True)
 
-st_country_map_col.markdown(
-    "***Due to a Plotly bug, you need to click on the `reset` button on "
-    "the top-right corner of the country map above for the data to show up"
-    "after every change.***"
-)
-
 country_line = create_line()
 
 
@@ -230,11 +224,12 @@ st_county_line = st.beta_columns(2)[1]
 county_line = create_line()
 
 st.markdown(
-    "*Map files created by the US Census Bureau and converted to GeoJSON "
-    "format by[Eric Celeste](https: // eric.clst.org/tech/usgeojson /) .*"
-    "\n\n"
-    "*Coronavirus data by "
-    "[The New York Times](https://github.com/nytimes/covid-19-data).*")
+    """    
+    ###### Map files created by the US Census Bureau and converted to GeoJSON \
+    format by [Eric Celeste](https://eric.clst.org/tech/usgeojson/). \
+    Coronavirus data by \
+    [The New York Times](https://github.com/nytimes/covid-19-data).
+    """)
 
 
 # Sidebar
